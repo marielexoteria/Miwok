@@ -57,6 +57,8 @@ public class PhrasesActivity extends AppCompatActivity {
                 Word word = words.get(position);
                 mMediaPlayer = MediaPlayer.create(PhrasesActivity.this, word.getAudioResourceID());
                 mMediaPlayer.start();
+                Log.v("File being played is: ", String.valueOf(word.getAudioResourceID()));
+                Log.v("Current Miwok word is: ", word.getMiwokTranslation());
             }
         });
     }
