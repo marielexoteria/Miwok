@@ -55,7 +55,7 @@ public class WordAdapter extends ArrayAdapter<Word> {
         defaultTextView.setText(currentWord.getDefaultTranslation());
 
         // Find the ImageView in the list_item.xml layout with the ID list_item_icon
-        ImageView iconView = (ImageView) listItemView.findViewById(R.id.image);
+        ImageView iconView = (ImageView) listItemView.findViewById(R.id.entry_image);
 
         if (currentWord.hasImage()) { //if there is a valid image for the word
             // Get the image resource ID from the current word object and set the image to iconView
