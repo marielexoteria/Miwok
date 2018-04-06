@@ -8,10 +8,10 @@ package com.example.android.miwok;
 
 public class Word {
     //Default translation for the word
-    private String mDefaultTranslation;
+    private int mDefaultTranslation;
 
     //Miwok translation for the word
-    private String mMiwokTranslation;
+    private int mMiwokTranslation;
 
     //Descriptive picture of the word (the resource ID will link to the actual file)
     private int mImageResourceID = NO_IMAGE_PROVIDED;
@@ -31,7 +31,7 @@ public class Word {
      * @param imageResourceID        the ID of the picture associated with the word
      * @param audioResourceID        the ID of the sound file associated with the word
     */
-    public Word(String defaultTranslation, String miwokTranslation, int imageResourceID, int audioResourceID) {
+    public Word(int defaultTranslation, int miwokTranslation, int imageResourceID, int audioResourceID) {
         mDefaultTranslation = defaultTranslation;
         mMiwokTranslation = miwokTranslation;
         mImageResourceID = imageResourceID;
@@ -44,19 +44,19 @@ public class Word {
      * @param miwokTranslation       the word in its Miwok equivalent
      * @param audioResourceID        the ID of the sound file associated with the word
     */
-    public Word(String defaultTranslation, String miwokTranslation, int audioResourceID) {
+    public Word(int defaultTranslation, int miwokTranslation, int audioResourceID) {
         mDefaultTranslation = defaultTranslation;
         mMiwokTranslation = miwokTranslation;
         mAudioResourceID = audioResourceID;
     }
 
     //Returns the default translation of the word
-    public String getDefaultTranslation() {
+    public int getDefaultTranslation() {
         return mDefaultTranslation;
     }
 
     //Returns the Miwok translation of the word
-    public String getMiwokTranslation() {
+    public int getMiwokTranslation() {
         return mMiwokTranslation;
     }
 

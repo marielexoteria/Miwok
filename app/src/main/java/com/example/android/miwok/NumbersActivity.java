@@ -3,8 +3,10 @@ package com.example.android.miwok;
 import android.content.Context;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
+import android.support.v4.app.NavUtils;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -70,6 +72,9 @@ public class NumbersActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.word_list);
 
+        //Enabling UP navigation
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         //Creates and sets up the AudioManager variable to request audio focus
         mAudioManager = (AudioManager)getSystemService(Context.AUDIO_SERVICE);
 
@@ -78,16 +83,16 @@ public class NumbersActivity extends AppCompatActivity {
         final ArrayList<Word> words = new ArrayList<Word>();
 
         //Populating the ArrayList
-        words.add(new Word("one", "lutti", R.drawable.number_one, R.raw.number_one));
-        words.add(new Word("two", "otiiko", R.drawable.number_two, R.raw.number_two));
-        words.add(new Word("three", "tolookosu", R.drawable.number_three, R.raw.number_three));
-        words.add(new Word("four", "oyyisa", R.drawable.number_four, R.raw.number_four));
-        words.add(new Word("five", "massokka", R.drawable.number_five, R.raw.number_five));
-        words.add(new Word("six", "temmokka", R.drawable.number_six, R.raw.number_six));
-        words.add(new Word("seven", "kenekaku", R.drawable.number_seven, R.raw.number_seven));
-        words.add(new Word("eight", "kawinta", R.drawable.number_eight, R.raw.number_eight));
-        words.add(new Word("nine", "wo'e", R.drawable.number_nine, R.raw.number_nine));
-        words.add(new Word("ten", "na'aancha", R.drawable.number_ten, R.raw.number_ten));
+        words.add(new Word(R.string.default_language_number_one, R.string.miwok_language_number_one, R.drawable.number_one, R.raw.number_one));
+        words.add(new Word(R.string.default_language_number_two, R.string.miwok_language_number_two, R.drawable.number_two, R.raw.number_two));
+        words.add(new Word(R.string.default_language_number_three, R.string.miwok_language_number_three, R.drawable.number_three, R.raw.number_three));
+        words.add(new Word(R.string.default_language_number_four, R.string.miwok_language_number_four, R.drawable.number_four, R.raw.number_four));
+        words.add(new Word(R.string.default_language_number_five, R.string.miwok_language_number_five, R.drawable.number_five, R.raw.number_five));
+        words.add(new Word(R.string.default_language_number_six, R.string.miwok_language_number_six, R.drawable.number_six, R.raw.number_six));
+        words.add(new Word(R.string.default_language_number_seven, R.string.miwok_language_number_seven, R.drawable.number_seven, R.raw.number_seven));
+        words.add(new Word(R.string.default_language_number_eight, R.string.miwok_language_number_eight, R.drawable.number_eight, R.raw.number_eight));
+        words.add(new Word(R.string.default_language_number_nine, R.string.miwok_language_number_nine, R.drawable.number_nine, R.raw.number_nine));
+        words.add(new Word(R.string.default_language_number_ten, R.string.miwok_language_number_ten, R.drawable.number_ten, R.raw.number_ten));
 
         WordAdapter adapter = new WordAdapter(this, words, R.color.category_numbers);
         ListView listView = (ListView) findViewById(R.id.list);
@@ -125,6 +130,20 @@ public class NumbersActivity extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    //Up navigation goes back to the parent activity. This code alters the visual behavior and shows
+    //the child activity moving to the right and then the parent activity shows.
+    //Using "NavUtils.navigateUpFromSameTask(this);" does the opposite effect
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            // Respond to the action bar's Up/Home button
+            case android.R.id.home:
+                onBackPressed();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     @Override

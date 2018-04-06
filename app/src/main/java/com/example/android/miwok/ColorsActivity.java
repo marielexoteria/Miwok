@@ -3,8 +3,10 @@ package com.example.android.miwok;
 import android.content.Context;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
+import android.support.v4.app.NavUtils;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -71,6 +73,9 @@ public class ColorsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.word_list);
 
+        //Enabling UP navigation
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         //Creates and sets up the AudioManager variable to request audio focus
         mAudioManager = (AudioManager)getSystemService(Context.AUDIO_SERVICE);
 
@@ -78,16 +83,21 @@ public class ColorsActivity extends AppCompatActivity {
         final ArrayList<Word> words = new ArrayList<Word>();
 
         //Populating the ArrayList
-        words.add(new Word("red", "weṭeṭṭi", R.drawable.color_red, R.raw.color_red));
-        words.add(new Word("green", "chokokki", R.drawable.color_green, R.raw.color_green));
-        words.add(new Word("brown", "ṭakaakki", R.drawable.color_brown, R.raw.color_brown));
-        words.add(new Word("gray", "ṭopoppi", R.drawable.color_gray, R.raw.color_gray));
-        words.add(new Word("black", "kululli", R.drawable.color_black, R.raw.color_black));
-        words.add(new Word("white", "kelelli", R.drawable.color_white, R.raw.color_white));
-        words.add(new Word("dusty yellow", "ṭopiisә", R.drawable.color_dusty_yellow,
-                R.raw.color_dusty_yellow));
-        words.add(new Word("mustard yellow", "chiwiiṭә", R.drawable.color_mustard_yellow,
-                R.raw.color_mustard_yellow));
+        words.add(new Word(R.string.default_language_red, R.string.miwok_language_red, R.drawable.color_red, R.raw.color_red));
+        words.add(new Word(R.string.default_language_green, R.string.miwok_language_green,
+                R.drawable.color_green, R.raw.color_green));
+        words.add(new Word(R.string.default_language_brown, R.string.miwok_language_brown,
+                R.drawable.color_brown, R.raw.color_brown));
+        words.add(new Word(R.string.default_language_gray, R.string.miwok_language_gray,
+                R.drawable.color_gray, R.raw.color_gray));
+        words.add(new Word(R.string.default_language_black, R.string.miwok_language_black,
+                R.drawable.color_black, R.raw.color_black));
+        words.add(new Word(R.string.default_language_white, R.string.miwok_language_white,
+                R.drawable.color_white, R.raw.color_white));
+        words.add(new Word(R.string.default_language_dusty_yellow, R.string.miwok_language_dusty_yellow,
+                R.drawable.color_dusty_yellow, R.raw.color_dusty_yellow));
+        words.add(new Word(R.string.default_language_mustard_yellow, R.string.miwok_language_mustard_yellow,
+                R.drawable.color_mustard_yellow, R.raw.color_mustard_yellow));
 
         WordAdapter adapter = new WordAdapter(this, words, R.color.category_colors);
         ListView listView = (ListView) findViewById(R.id.list);
@@ -125,6 +135,20 @@ public class ColorsActivity extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    //Up navigation goes back to the parent activity. This code alters the visual behavior and shows
+    //the child activity moving to the right and then the parent activity shows.
+    //Using "NavUtils.navigateUpFromSameTask(this);" does the opposite effect
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            // Respond to the action bar's Up/Home button
+            case android.R.id.home:
+                onBackPressed();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     @Override
