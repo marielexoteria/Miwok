@@ -114,6 +114,7 @@ public class PhrasesActivity extends AppCompatActivity {
                 //Declaring a variable that will get the position of the word that has been clicked on
                 //to play the pertinent sound file
                 Word word = words.get(position);
+<<<<<<< HEAD
 
                 //Requesting audio focus for playing the sound file
                 int result = mAudioManager.requestAudioFocus(mOnAudioFocusChangeListener,
@@ -133,6 +134,15 @@ public class PhrasesActivity extends AppCompatActivity {
                     //the sound file has completed and stopped playing
                     mMediaPlayer.setOnCompletionListener(mCompletionListener);
                 }
+||||||| merged common ancestors
+                mMediaPlayer = MediaPlayer.create(PhrasesActivity.this, word.getAudioResourceID());
+                mMediaPlayer.start();
+=======
+                mMediaPlayer = MediaPlayer.create(PhrasesActivity.this, word.getAudioResourceID());
+                mMediaPlayer.start();
+                Log.v("File being played is: ", String.valueOf(word.getAudioResourceID()));
+                Log.v("Current Miwok word is: ", word.getMiwokTranslation());
+>>>>>>> 4a0e4b935e3a419650ebdd7b55fcf3e2db77a253
             }
         });
     }
