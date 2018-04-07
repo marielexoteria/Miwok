@@ -80,5 +80,8 @@
     <string name="default_language_lets_go">Let\'s go.</string>
     <string name="default_language_come_here">Come here.</string>
 
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
 
 </resources>

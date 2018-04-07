@@ -20,9 +20,9 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.TextView;
-import android.widget.Toast;
+//import android.widget.Toast;
 
-import org.w3c.dom.Text;
+//import org.w3c.dom.Text;
 
 public class MainActivity extends AppCompatActivity {
 

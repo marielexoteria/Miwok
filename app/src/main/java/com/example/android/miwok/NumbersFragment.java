@@ -1,18 +1,23 @@
 package com.example.android.miwok;
 
+
 import android.content.Context;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.MenuItem;
+import android.app.Fragment;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
 import java.util.ArrayList;
 
-public class ColorsActivity extends AppCompatActivity {
+/**
+ * A simple {@link Fragment} subclass.
+ */
+public class NumbersFragment extends Fragment {
 
     //Declaring a variable of object MediaPlayer to play the sound files
     private MediaPlayer mMediaPlayer;
@@ -67,39 +72,38 @@ public class ColorsActivity extends AppCompatActivity {
             };
 
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.word_list);
+    public NumbersFragment() {
+        // Required empty public constructor
 
-        //Enabling UP navigation
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+    }
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        View rootView = inflater.inflate(R.layout.word_list, container, false);
 
         //Creates and sets up the AudioManager variable to request audio focus
-        mAudioManager = (AudioManager)getSystemService(Context.AUDIO_SERVICE);
+        mAudioManager = (AudioManager) getActivity().getSystemService(Context.AUDIO_SERVICE);
 
         //Creating an ArrayList of words in English and Miwok
+        //Making the ArrayList words final to reference it from within the OnItemClick method below
         final ArrayList<Word> words = new ArrayList<Word>();
 
         //Populating the ArrayList
-        words.add(new Word(R.string.default_language_red, R.string.miwok_language_red, R.drawable.color_red, R.raw.color_red));
-        words.add(new Word(R.string.default_language_green, R.string.miwok_language_green,
-                R.drawable.color_green, R.raw.color_green));
-        words.add(new Word(R.string.default_language_brown, R.string.miwok_language_brown,
-                R.drawable.color_brown, R.raw.color_brown));
-        words.add(new Word(R.string.default_language_gray, R.string.miwok_language_gray,
-                R.drawable.color_gray, R.raw.color_gray));
-        words.add(new Word(R.string.default_language_black, R.string.miwok_language_black,
-                R.drawable.color_black, R.raw.color_black));
-        words.add(new Word(R.string.default_language_white, R.string.miwok_language_white,
-                R.drawable.color_white, R.raw.color_white));
-        words.add(new Word(R.string.default_language_dusty_yellow, R.string.miwok_language_dusty_yellow,
-                R.drawable.color_dusty_yellow, R.raw.color_dusty_yellow));
-        words.add(new Word(R.string.default_language_mustard_yellow, R.string.miwok_language_mustard_yellow,
-                R.drawable.color_mustard_yellow, R.raw.color_mustard_yellow));
+        words.add(new Word(R.string.default_language_number_one, R.string.miwok_language_number_one, R.drawable.number_one, R.raw.number_one));
+        words.add(new Word(R.string.default_language_number_two, R.string.miwok_language_number_two, R.drawable.number_two, R.raw.number_two));
+        words.add(new Word(R.string.default_language_number_three, R.string.miwok_language_number_three, R.drawable.number_three, R.raw.number_three));
+        words.add(new Word(R.string.default_language_number_four, R.string.miwok_language_number_four, R.drawable.number_four, R.raw.number_four));
+        words.add(new Word(R.string.default_language_number_five, R.string.miwok_language_number_five, R.drawable.number_five, R.raw.number_five));
+        words.add(new Word(R.string.default_language_number_six, R.string.miwok_language_number_six, R.drawable.number_six, R.raw.number_six));
+        words.add(new Word(R.string.default_language_number_seven, R.string.miwok_language_number_seven, R.drawable.number_seven, R.raw.number_seven));
+        words.add(new Word(R.string.default_language_number_eight, R.string.miwok_language_number_eight, R.drawable.number_eight, R.raw.number_eight));
+        words.add(new Word(R.string.default_language_number_nine, R.string.miwok_language_number_nine, R.drawable.number_nine, R.raw.number_nine));
+        words.add(new Word(R.string.default_language_number_ten, R.string.miwok_language_number_ten, R.drawable.number_ten, R.raw.number_ten));
 
-        WordAdapter adapter = new WordAdapter(this, words, R.color.category_colors);
-        ListView listView = (ListView) findViewById(R.id.list);
+        WordAdapter adapter = new WordAdapter(getActivity(), words, R.color.category_numbers);
+        ListView listView = (ListView) rootView.findViewById(R.id.list);
         listView.setAdapter(adapter);
 
         //Playing the sound files
@@ -125,7 +129,7 @@ public class ColorsActivity extends AppCompatActivity {
                     //mAudioManager.registerMediaButtonEventReceiver(RemoteControlReceiver);
                     //We have audio focus now - start playing the file
 
-                    mMediaPlayer = MediaPlayer.create(ColorsActivity.this, word.getAudioResourceID());
+                    mMediaPlayer = MediaPlayer.create(getActivity(), word.getAudioResourceID());
                     mMediaPlayer.start();
 
                     //Setting a listener on the sound file to release the media player resources once
@@ -134,24 +138,12 @@ public class ColorsActivity extends AppCompatActivity {
                 }
             }
         });
-    }
 
-    //Up navigation goes back to the parent activity. This code alters the visual behavior and shows
-    //the child activity moving to the right and then the parent activity shows.
-    //Using "NavUtils.navigateUpFromSameTask(this);" does the opposite effect
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            // Respond to the action bar's Up/Home button
-            case android.R.id.home:
-                onBackPressed();
-                return true;
-        }
-        return super.onOptionsItemSelected(item);
+        return rootView;
     }
 
     @Override
-    protected void onStop() {
+    public void onStop() {
         super.onStop();
         //When the activity is stopped, release the media player resources because we won't
         //be playing any more sounds
@@ -178,4 +170,5 @@ public class ColorsActivity extends AppCompatActivity {
             mAudioManager.abandonAudioFocus(mOnAudioFocusChangeListener);
         }
     }
+
 }
