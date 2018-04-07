@@ -5,8 +5,9 @@ import android.content.Context;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.os.Bundle;
-import android.app.Fragment;
+import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -148,6 +149,20 @@ public class NumbersFragment extends Fragment {
         //When the activity is stopped, release the media player resources because we won't
         //be playing any more sounds
         releaseMediaPlayer();
+    }
+
+    //Up navigation goes back to the parent activity. This code alters the visual behavior and shows
+    //the child activity moving to the right and then the parent activity shows.
+    //Using "NavUtils.navigateUpFromSameTask(this);" does the opposite effect
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            // Respond to the action bar's Up/Home button
+            case android.R.id.home:
+                getActivity().onBackPressed();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     /**
