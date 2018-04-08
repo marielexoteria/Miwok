@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- NOT TO BE TRANSLATED!!! -->
+    
+    <!-- Strings used in the ArrayList in NumbersActivity.java - Miwok language [CHAR LIMIT=20] -->
+    <string name="miwok_language_number_one">lutti</string>
+    <string name="miwok_language_number_two">otiiko</string>
+    <string name="miwok_language_number_three">tolookosu</string>
+    <string name="miwok_language_number_four">oyyisa</string>
+    <string name="miwok_language_number_five">massokka</string>
+    <string name="miwok_language_number_six">temmokka</string>
+    <string name="miwok_language_number_seven">kenekaku</string>
+    <string name="miwok_language_number_eight">kawinta</string>
+    <string name="miwok_language_number_nine">wo\'e</string>
+    <string name="miwok_language_number_ten">na\'aancha</string>
+
+    <!-- Strings used in the ArrayList in FamilyActivity.java - Miwok language [CHAR LIMIT=20]-->
+    <string name="miwok_language_father">әpә</string>
+    <string name="miwok_language_mother">әṭa</string>
+    <string name="miwok_language_son">angsi</string>
+    <string name="miwok_language_daughter">tune</string>
+    <string name="miwok_language_older_brother">taachi</string>
+    <string name="miwok_language_younger_brother">chalitti</string>
+    <string name="miwok_language_older_sister">teṭe</string>
+    <string name="miwok_language_younger_sister">kolliti</string>
+    <string name="miwok_language_grandmother">ama</string>
+    <string name="miwok_language_grandfather">paapa</string>
+
+    <!-- Strings used in the ArrayList in ColorsActivity.java - Miwok language [CHAR LIMIT=20]-->
+    <string name="miwok_language_red">weṭeṭṭi</string>
+    <string name="miwok_language_green">chokokki</string>
+    <string name="miwok_language_brown">ṭakaakki</string>
+    <string name="miwok_language_gray">ṭopoppi</string>
+    <string name="miwok_language_black">kululli</string>
+    <string name="miwok_language_white">kelelli</string>
+    <string name="miwok_language_dusty_yellow">ṭopiisә</string>
+    <string name="miwok_language_mustard_yellow">chiwiiṭә</string>
+
+    <!-- Strings used in the ArrayList in PhrasesActivity.java - Miwok language [CHAR LIMIT=20]-->
+    <string name="miwok_language_where_are_you_going">minto wuksus</string>
+    <string name="miwok_language_what_is_your_name">tinnә oyaase\'nә"</string>
+    <string name="miwok_language_my_name_is">oyaaset...</string>
+    <string name="miwok_language_how_are_you_feeling">michәksәs?</string>
+    <string name="miwok_language_im_feeling_good">kuchi achit</string>
+    <string name="miwok_language_are_you_coming">әәnәs\'aa?</string>
+    <string name="miwok_language_yes_im_coming">hәә\’ әәnәm</string>
+    <string name="miwok_language_im_coming">әәnәm</string>
+    <string name="miwok_language_lets_go">yoowutis</string>
+    <string name="miwok_language_come_here">әnni\'nem.</string>
+</resources>

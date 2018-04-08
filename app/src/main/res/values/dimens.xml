@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Height of each list item -->
+    <dimen name="list_item_height">88dp</dimen>
+
+    <!-- Dimensions used for the play icon in list_item.xml -->
+    <dimen name="play_icon_size">24dp</dimen>
+    <dimen name="margin_right">16dp</dimen>
+</resources>
